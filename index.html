@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ঘরোয়া হেঁশেল — অফিসে ঘরের রান্না</title>
+<meta name="description" content="প্রতিদিন দুপুরে অফিসে পৌঁছে যায় ঘরে রান্না করা গরম খাবার। কম তেল, কম মসলা, পরিষ্কার রান্নাঘর।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#fbf6ee;
+    --paper:#ffffff;
+    --ink:#2b2118;
+    --muted:#6f6254;
+    --turmeric:#e0a526;
+    --chili:#b8432f;
+    --leaf:#3f6b3a;
+    --line:#ecdfcc;
+    --radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Hind Siliguri',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.7;font-size:17px}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1120px,92%);margin-inline:auto}
+  section{padding:80px 0}
+  h1,h2,h3{line-height:1.3}
+  h2{font-size:clamp(1.7rem,3.5vw,2.4rem);margin-bottom:12px}
+  .eyebrow{display:inline-block;color:var(--chili);font-weight:600;font-size:.95rem;margin-bottom:8px;letter-spacing:.02em}
+  .lead{color:var(--muted);max-width:620px}
+  .center{text-align:center}
+  .center .lead{margin-inline:auto}
+
+  /* demo notice */
+  .demo{background:var(--ink);color:#f4e9d8;text-align:center;font-size:.85rem;padding:6px 12px}
+
+  /* nav */
+  header{position:sticky;top:0;z-index:50;background:rgba(251,246,238,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.3rem}
+  .logo-mark{width:38px;height:38px;border-radius:50%;background:var(--chili);display:grid;place-items:center;color:#fff;font-size:1.1rem}
+  .nav-links{display:flex;gap:28px;font-weight:500;color:var(--muted)}
+  .nav-links a:hover{color:var(--chili)}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:600;font-size:1rem;border:2px solid transparent;cursor:pointer;transition:transform .15s,box-shadow .15s,background .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--chili);color:#fff;box-shadow:0 6px 18px rgba(184,67,47,.28)}
+  .btn-primary:hover{background:#a03a28}
+  .btn-ghost{border-color:var(--ink);color:var(--ink)}
+  .btn-sm{padding:9px 18px;font-size:.92rem}
+
+  /* hero */
+  .hero{padding:64px 0 80px}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .hero h1{font-size:clamp(2.2rem,5.2vw,3.6rem);margin-bottom:18px}
+  .hero h1 span{color:var(--chili)}
+  .hero p{font-size:1.15rem;color:var(--muted);margin-bottom:28px;max-width:520px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+  .hero-stats{display:flex;gap:32px;flex-wrap:wrap}
+  .hero-stats b{display:block;font-size:1.6rem;color:var(--ink)}
+  .hero-stats small{color:var(--muted);font-size:.9rem}
+  .plate{position:relative;aspect-ratio:1;border-radius:50%;background:
+      radial-gradient(circle at 50% 50%,#fff 0 58%,#f3e7d3 58% 62%,#fff 62% 70%,transparent 70%),
+      var(--turmeric);
+      box-shadow:0 30px 60px rgba(43,33,24,.18)}
+  .plate .food{position:absolute;border-radius:50%}
+  .f1{width:30%;height:30%;left:24%;top:24%;background:radial-gradient(circle at 40% 40%,#fffdf6,#efe6d2)}
+  .f2{width:24%;height:24%;right:22%;top:26%;background:radial-gradient(circle at 40% 40%,#d8923a,#a4541f)}
+  .f3{width:22%;height:22%;left:30%;bottom:22%;background:radial-gradient(circle at 40% 40%,#7aa05a,#3f6b3a)}
+  .f4{width:20%;height:20%;right:26%;bottom:24%;background:radial-gradient(circle at 40% 40%,#f1c75a,#d39a1d)}
+  .badge{position:absolute;background:var(--paper);border-radius:14px;padding:10px 14px;box-shadow:0 10px 28px rgba(43,33,24,.14);font-size:.9rem;font-weight:600;display:flex;align-items:center;gap:8px}
+  .badge.b1{left:-6%;bottom:14%}
+  .badge.b2{right:-4%;top:10%}
+
+  /* problem/benefits */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+  .icon{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:1.5rem;margin-bottom:16px;background:#fbefd6}
+  .card h3{font-size:1.2rem;margin-bottom:6px}
+  .card p{color:var(--muted);font-size:.98rem}
+
+  /* menu */
+  .menu-bg{background:var(--paper);border-block:1px solid var(--line)}
+  .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+  .dish{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--cream);display:flex;flex-direction:column}
+  .dish-top{height:130px;display:grid;place-items:center;font-size:3.2rem}
+  .dish-body{padding:22px;display:flex;flex-direction:column;flex:1}
+  .dish h3{font-size:1.2rem}
+  .dish ul{list-style:none;color:var(--muted);font-size:.95rem;margin:10px 0 18px}
+  .dish li::before{content:"• ";color:var(--turmeric)}
+  .dish-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between}
+  .price{font-size:1.5rem;font-weight:700}
+  .price small{font-size:.85rem;color:var(--muted);font-weight:500}
+  .tag{display:inline-block;font-size:.8rem;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--leaf);color:#fff;margin-bottom:8px;align-self:flex-start}
+  .offer{margin-top:36px;background:var(--ink);color:#f7eddc;border-radius:var(--radius);padding:26px 30px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .offer b{color:var(--turmeric)}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px;counter-reset:s}
+  .step{position:relative;padding:26px;border-radius:var(--radius);background:var(--paper);border:1px solid var(--line)}
+  .step::before{counter-increment:s;content:counter(s,bengali);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--turmeric);color:var(--ink);font-weight:700;margin-bottom:14px}
+  .step h3{font-size:1.1rem;margin-bottom:4px}
+  .step p{color:var(--muted);font-size:.95rem}
+  .delivery-info{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px}
+  .pill{background:#fbefd6;border-radius:999px;padding:8px 16px;font-size:.95rem}
+
+  /* reviews */
+  .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+  .review{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column}
+  .stars{color:var(--turmeric);letter-spacing:2px;margin-bottom:10px}
+  .review p{flex:1;margin-bottom:18px}
+  .who{display:flex;align-items:center;gap:12px}
+  .avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff}
+  .who small{display:block;color:var(--muted);font-size:.85rem;line-height:1.3}
+  .sample-note{margin-top:18px;font-size:.85rem;color:var(--muted);text-align:center}
+
+  /* faq */
+  .faq{max-width:780px;margin:40px auto 0}
+  details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;padding:0 22px}
+  summary{cursor:pointer;list-style:none;font-weight:600;padding:18px 0;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:1.5rem;color:var(--chili);transition:transform .2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{color:var(--muted);padding-bottom:18px}
+
+  /* cta */
+  .cta{background:var(--chili);color:#fff;border-radius:28px;padding:56px 40px;text-align:center;position:relative;overflow:hidden}
+  .cta::after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.08);right:-80px;top:-80px}
+  .cta h2{color:#fff}
+  .cta p{opacity:.9;margin:0 auto 26px;max-width:540px}
+  .cta .btn{background:#fff;color:var(--chili)}
+  .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+  .cta .btn-outline{background:transparent;color:#fff;border-color:#fff}
+
+  /* footer */
+  footer{padding:50px 0 90px;border-top:1px solid var(--line);margin-top:80px}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+  .foot h4{margin-bottom:10px}
+  .foot p,.foot a{color:var(--muted);font-size:.95rem;display:block}
+  .foot a:hover{color:var(--chili)}
+  .copy{margin-top:30px;color:var(--muted);font-size:.85rem;text-align:center}
+
+  /* floating whatsapp */
+  .wa{position:fixed;right:18px;bottom:18px;z-index:60;background:#25D366;color:#fff;border-radius:999px;padding:13px 20px;font-weight:600;box-shadow:0 8px 22px rgba(0,0,0,.22);display:flex;align-items:center;gap:8px}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.show{opacity:1;transform:none}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .plate{max-width:340px;margin-inline:auto}
+    .cards,.menu-grid,.reviews{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    .foot{grid-template-columns:1fr}
+    .nav-links{display:none}
+  }
+  @media (max-width:600px){
+    body{font-size:16px}
+    section{padding:60px 0}
+    .cards,.menu-grid,.reviews,.steps{grid-template-columns:1fr}
+    .hero{padding:40px 0 60px}
+    .badge.b1{left:0}.badge.b2{right:0}
+    .cta{padding:44px 22px}
+    .offer{padding:22px}
+    .nav .btn-sm{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo">এটি একটি নমুনা পেজ। ব্যবসা, রিভিউ ও যোগাযোগের তথ্য কাল্পনিক।</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo"><span class="logo-mark">হ</span>ঘরোয়া হেঁশেল</a>
+    <nav class="nav-links">
+      <a href="#why">কেন আমরা</a>
+      <a href="#menu">মেনু ও দাম</a>
+      <a href="#how">অর্ডার</a>
+      <a href="#reviews">রিভিউ</a>
+      <a href="#faq">প্রশ্ন</a>
+    </nav>
+    <a href="#order" class="btn btn-primary btn-sm">অর্ডার করুন</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">ধানমন্ডি · মোহাম্মদপুর · কারওয়ান বাজার</span>
+      <h1>অফিসের টেবিলে <span>মায়ের হাতের</span> স্বাদ</h1>
+      <p>প্রতিদিন দুপুর ১টার আগে আপনার অফিসে পৌঁছে যাবে ঘরে রান্না করা গরম ভাত-তরকারি। কম তেল, কম মসলা, প্রতিদিন নতুন মেনু।</p>
+      <div class="hero-actions">
+        <a href="#order" class="btn btn-primary">আজই লাঞ্চ অর্ডার করুন →</a>
+        <a href="#menu" class="btn btn-ghost">মেনু দেখুন</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>৩৫০+</b><small>নিয়মিত কাস্টমার</small></div>
+        <div><b>১২০৳</b><small>থেকে শুরু</small></div>
+        <div><b>৪.৮ ★</b><small>গড় রেটিং</small></div>
+      </div>
+    </div>
+    <div style="position:relative">
+      <div class="plate" aria-hidden="true">
+        <span class="food f1"></span><span class="food f2"></span>
+        <span class="food f3"></span><span class="food f4"></span>
+      </div>
+      <div class="badge b1">🔥 গরম অবস্থায় ডেলিভারি</div>
+      <div class="badge b2">🌿 প্রতিদিন তাজা বাজার</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="wrap center reveal">
+    <span class="eyebrow">সমস্যা আর সমাধান</span>
+    <h2>রোজ বাইরের খাবারে ক্লান্ত?</h2>
+    <p class="lead">তেলে ভাসা খাবার, বেশি দাম, আর "আজ কী খাব" ভাবনা। সকালে রান্না করে আনার সময়ও থাকে না। ঘরোয়া হেঁশেল ঠিক এই জায়গাটা পূরণ করে।</p>
+  </div>
+  <div class="wrap cards">
+    <div class="card reveal"><div class="icon">🥘</div><h3>সত্যিকারের ঘরের রান্না</h3><p>রেস্টুরেন্ট নয়, আমাদের নিজের বাসার রান্নাঘরে রান্না হয়। ঝাল-তেল একদম পরিমিত।</p></div>
+    <div class="card reveal"><div class="icon">⏰</div><h3>সময়মতো ডেলিভারি</h3><p>১২:৩০ থেকে ১টার মধ্যে অফিসে পৌঁছায়। দেরি হলে সেদিনের ডেলিভারি চার্জ ফেরত।</p></div>
+    <div class="card reveal"><div class="icon">💰</div><h3>বাজেটের মধ্যে</h3><p>রেস্টুরেন্টের অর্ধেক দামে পেট ভরা খাবার। মাসিক প্যাকেজে আরও সাশ্রয়।</p></div>
+    <div class="card reveal"><div class="icon">📅</div><h3>প্রতিদিন নতুন মেনু</h3><p>সপ্তাহের মেনু প্রতি শুক্রবার WhatsApp-এ পাঠিয়ে দিই, একই খাবার বারবার নয়।</p></div>
+    <div class="card reveal"><div class="icon">🧼</div><h3>পরিষ্কার-পরিচ্ছন্ন</h3><p>ফুড-গ্রেড বক্স, প্রতিদিন ধোয়া রান্নাঘর, হাতে গ্লাভস। ছবি চাইলেই দেখাই।</p></div>
+    <div class="card reveal"><div class="icon">♻️</div><h3>বক্স ফেরতে ছাড়</h3><p>স্টিলের টিফিন বক্স ফেরত দিলে প্রতি মিলে ৫৳ কম, পরিবেশও বাঁচে।</p></div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="menu-bg">
+  <div class="wrap center reveal">
+    <span class="eyebrow">মেনু ও দাম</span>
+    <h2>আপনার পছন্দের লাঞ্চবক্স</h2>
+    <p class="lead">সব বক্সে ভাত, ডাল আর সালাদ থাকে। দাম ডেলিভারি চার্জ ছাড়া।</p>
+  </div>
+  <div class="wrap menu-grid">
+    <article class="dish reveal">
+      <div class="dish-top" style="background:#f3ead6">🍚</div>
+      <div class="dish-body">
+        <h3>সবজি বক্স</h3>
+        <ul><li>মৌসুমি সবজি ভাজি</li><li>ঘন মসুর ডাল</li><li>ভর্তা (প্রতিদিন আলাদা)</li></ul>
+        <div class="dish-foot"><span class="price">১২০৳ <small>/ মিল</small></span><a href="#order" class="btn btn-ghost btn-sm">বাছাই করুন</a></div>
+      </div>
+    </article>
+    <article class="dish reveal" style="border-color:var(--chili);box-shadow:0 14px 34px rgba(184,67,47,.14)">
+      <div class="dish-top" style="background:#f8dccf">🍗</div>
+      <div class="dish-body">
+        <span class="tag">সবচেয়ে জনপ্রিয়</span>
+        <h3>মুরগি বক্স</h3>
+        <ul><li>দেশি স্টাইলে মুরগির ঝোল</li><li>একটা সবজি</li><li>ডাল ও সালাদ</li></ul>
+        <div class="dish-foot"><span class="price">১৬০৳ <small>/ মিল</small></span><a href="#order" class="btn btn-primary btn-sm">বাছাই করুন</a></div>
+      </div>
+    </article>
+    <article class="dish reveal">
+      <div class="dish-top" style="background:#dbe7d2">🐟</div>
+      <div class="dish-body">
+        <h3>মাছ বক্স</h3>
+        <ul><li>রুই / পাবদা / টেংরা (দিন অনুযায়ী)</li><li>একটা সবজি</li><li>ডাল ও সালাদ</li></ul>
+        <div class="dish-foot"><span class="price">১৭০৳ <small>/ মিল</small></span><a href="#order" class="btn btn-ghost btn-sm">বাছাই করুন</a></div>
+      </div>
+    </article>
+  </div>
+  <div class="wrap">
+    <div class="offer reveal">
+      <div><b>মাসিক প্যাকেজ:</b> ২২ দিনের লাঞ্চ একসাথে নিলে <b>১০% ছাড়</b> আর ডেলিভারি <b>ফ্রি</b>। প্রথম দিনের খাবার পছন্দ না হলে টাকা ফেরত।</div>
+      <a href="#order" class="btn btn-primary btn-sm">প্যাকেজ নিন</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how">
+  <div class="wrap center reveal">
+    <span class="eyebrow">কীভাবে অর্ডার করবেন</span>
+    <h2>চারটা সহজ ধাপ</h2>
+  </div>
+  <div class="wrap steps">
+    <div class="step reveal"><h3>WhatsApp করুন</h3><p>আগের রাত ১০টার মধ্যে বক্স আর ঠিকানা জানান।</p></div>
+    <div class="step reveal"><h3>কনফার্মেশন</h3><p>আমরা মেনু আর মোট দাম জানিয়ে কনফার্ম করব।</p></div>
+    <div class="step reveal"><h3>সকালে রান্না</h3><p>সকাল ৮টায় রান্না শুরু, তাজা বাজার দিয়ে।</p></div>
+    <div class="step reveal"><h3>দুপুরে ডেলিভারি</h3><p>১২:৩০ থেকে ১টার মধ্যে আপনার ডেস্কে। ক্যাশ বা বিকাশে পেমেন্ট।</p></div>
+  </div>
+  <div class="wrap delivery-info reveal" style="justify-content:center">
+    <span class="pill">📍 ধানমন্ডি, মোহাম্মদপুর, কারওয়ান বাজার, পান্থপথ</span>
+    <span class="pill">🛵 ডেলিভারি চার্জ ২০৳</span>
+    <span class="pill">🗓️ শনি থেকে বৃহস্পতিবার</span>
+    <span class="pill">💳 ক্যাশ / বিকাশ / নগদ</span>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="menu-bg">
+  <div class="wrap center reveal">
+    <span class="eyebrow">কাস্টমারের কথা</span>
+    <h2>যারা প্রতিদিন খাচ্ছেন</h2>
+  </div>
+  <div class="wrap reviews">
+    <div class="review reveal">
+      <div class="stars">★★★★★</div>
+      <p>"আট মাস ধরে নিচ্ছি। গ্যাস্ট্রিকের সমস্যা ছিল, বাইরের খাবার বাদ দেওয়ার পর অনেক ভালো আছি। ডালটা একদম বাসার মতো।"</p>
+      <div class="who"><span class="avatar" style="background:var(--leaf)">ত</span><div><b>তানভীর হাসান</b><small>ব্যাংক কর্মকর্তা, কারওয়ান বাজার</small></div></div>
+    </div>
+    <div class="review reveal">
+      <div class="stars">★★★★★</div>
+      <p>"আমাদের অফিসের ছয়জন একসাথে মাসিক প্যাকেজ নিয়েছি। কখনো দেরি হয়নি, আর প্রতিদিন মেনু আলাদা থাকে।"</p>
+      <div class="who"><span class="avatar" style="background:var(--chili)">ন</span><div><b>নুসরাত জাহান</b><small>HR ম্যানেজার, ধানমন্ডি</small></div></div>
+    </div>
+    <div class="review reveal">
+      <div class="stars">★★★★☆</div>
+      <p>"পাবদা মাছের দিনটা সবচেয়ে প্রিয়। ঝাল একটু কম লাগে, বললে বাড়িয়ে দেয়। দামের তুলনায় অনেক ভালো।"</p>
+      <div class="who"><span class="avatar" style="background:var(--turmeric);color:var(--ink)">র</span><div><b>রাকিব আহমেদ</b><small>সফটওয়্যার ইঞ্জিনিয়ার, পান্থপথ</small></div></div>
+    </div>
+  </div>
+  <p class="sample-note">নমুনা রিভিউ। আসল পেজে কাস্টমারের অনুমতি নিয়ে তাঁদের নিজের কথা বসাবেন।</p>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap center reveal">
+    <span class="eyebrow">প্রশ্ন ও উত্তর</span>
+    <h2>সাধারণ প্রশ্ন</h2>
+  </div>
+  <div class="wrap faq reveal">
+    <details open><summary>একদিনের জন্য অর্ডার করা যায়?</summary><p>হ্যাঁ। একটা মিলও অর্ডার করা যায়। শুধু আগের রাত ১০টার মধ্যে জানাতে হবে।</p></details>
+    <details><summary>ঝাল বা তেল কমবেশি করা যায়?</summary><p>অবশ্যই। অর্ডারের সময় বলে দিন, কম ঝাল, ঝাল ছাড়া বা ডায়াবেটিস-বান্ধব (কম ভাত) বক্স করে দিই।</p></details>
+    <details><summary>খাবার কি গরম থাকে?</summary><p>রান্নার দুই ঘণ্টার মধ্যে ইনসুলেটেড ব্যাগে ডেলিভারি হয়, তাই খাবার গরম থাকে।</p></details>
+    <details><summary>মাসিক প্যাকেজের মাঝখানে বন্ধ করা যায়?</summary><p>হ্যাঁ। ছুটি বা অফিস বন্ধ থাকলে আগের দিন জানালে সেই দিনগুলো পরে যোগ করে দিই, অথবা বাকি টাকা ফেরত দিই।</p></details>
+    <details><summary>পেমেন্ট কীভাবে করব?</summary><p>ক্যাশ অন ডেলিভারি, বিকাশ বা নগদ। মাসিক প্যাকেজের টাকা প্রথম সপ্তাহে দিলেই হবে।</p></details>
+    <details><summary>আমার এলাকায় ডেলিভারি দেন?</summary><p>এখন ধানমন্ডি, মোহাম্মদপুর, কারওয়ান বাজার আর পান্থপথে দিই। অন্য এলাকায় ৫ জন বা তার বেশি একসাথে অর্ডার করলে জানান, ব্যবস্থা করব।</p></details>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="order" style="padding-top:20px">
+  <div class="wrap">
+    <div class="cta reveal">
+      <h2>কাল দুপুরের লাঞ্চ এখনই ঠিক করে ফেলুন</h2>
+      <p>প্রথম অর্ডারে ডেলিভারি ফ্রি। WhatsApp-এ আপনার নাম, অফিসের ঠিকানা আর পছন্দের বক্স লিখে পাঠান।</p>
+      <div class="cta-actions">
+        <a class="btn" href="https://wa.me/8801000000000?text=%E0%A6%86%E0%A6%B8%E0%A6%B8%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A7%81%20%E0%A6%86%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%81%E0%A6%AE%2C%20%E0%A6%B2%E0%A6%BE%E0%A6%9E%E0%A7%8D%E0%A6%9A%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87" target="_blank" rel="noopener">💬 WhatsApp-এ অর্ডার করুন</a>
+        <a class="btn btn-outline" href="tel:+8801000000000">📞 কল করুন</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a href="#" class="logo" style="color:var(--ink);margin-bottom:10px"><span class="logo-mark">হ</span>ঘরোয়া হেঁশেল</a>
+      <p>অফিসের জন্য ঘরে রান্না করা দুপুরের খাবার, ২০২৩ সাল থেকে।</p>
+    </div>
+    <div>
+      <h4>যোগাযোগ</h4>
+      <a href="tel:+8801000000000">📞 ০১০০০-০০০০০০</a>
+      <a href="https://wa.me/8801000000000" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <a href="#" >📘 Facebook পেজ</a>
+    </div>
+    <div>
+      <h4>ঠিকানা ও সময়</h4>
+      <p>রোড ০, ধানমন্ডি, ঢাকা</p>
+      <p>অর্ডার নেওয়া: সকাল ৯টা থেকে রাত ১০টা</p>
+      <p>ডেলিভারি: শনি থেকে বৃহস্পতি</p>
+    </div>
+  </div>
+  <p class="copy">© ২০২৬ ঘরোয়া হেঁশেল (নমুনা)</p>
+</footer>
+
+<a class="wa" href="https://wa.me/8801000000000" target="_blank" rel="noopener" aria-label="WhatsApp-এ অর্ডার করুন">💬 অর্ডার</a>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
